@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Observaciones Meteorológicas - Tarjetas</title>
+<style>
+body {
+  font-family:'Poppins',sans-serif;
+  background:#e0f2f7;
+  color:#222;
+  margin:0;
+  padding:20px;
+}
+h1 {
+  color:#05445e;
+  font-weight:600;
+  margin:0;
+}
+
+/* Encabezado con logo centrado */
+#header {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:15px;
+  margin-bottom:10px;
+}
+
+/* Nota NIL */
+#notaNIL {
+  text-align:center;
+  margin-bottom:20px;
+  font-size:0.95rem;
+  color:#05445e;
+}
+
+/* Contenedor principal */
+#mainContainer {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:40px;
+}
+
+/* Tarjetas */
+.card {
+  background:#ffffff;
+  border-radius:15px;
+  padding:20px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+  flex:1 1 480px;
+  min-width:320px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+/* Secciones de formulario */
+.form-section {
+  display:flex;
+  flex-direction:column;
+}
+.form-section label, .form-section h2 {
+  margin:0 0 5px 0;
+  color:#087ea4;
+  font-size:0.95rem;
+  font-weight:500;
+}
+.form-section input, .form-section select {
+  padding:0.5rem;
+  border-radius:8px;
+  border:1px solid #ccc;
+  font-size:0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-section input:focus, .form-section select:focus {
+  outline:none;
+  border-color:#087ea4;
+  box-shadow:0 0 6px rgba(8,126,164,0.3);
+}
+
+/* Botones */
+button {
+  background:#087ea4;
+  color:#fff;
+  border:none;
+  padding:0.8rem 1rem;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+  font-size:1rem;
+  transition: background 0.2s, transform 0.2s;
+}
+button:hover {
+  background:#05445e;
+  transform: scale(1.02);
+}
+
+/* Reporte limpio */
+#reporte {
+  background:#ffffff;
+  border-radius:12px;
+  padding:18px;
+  min-height:450px;
+  font-family:Arial, sans-serif;
+  font-size:1rem;
+  line-height:1.6;
+  white-space:pre-wrap;
+  overflow-y:auto;
+  color:#000;
+}
+
+/* Negrita para título en reporte */
+#contenidoReporte .tituloReporte {
+  font-weight:bold;
+  display:block;
+  margin-bottom:5px;
+}
+
+/* Texto de autor */
+#autor {
+  text-align:center;
+  margin-top:25px;
+  font-size:0.9rem;
+  color:#05445e;
+  font-weight:500;
+}
+
+/* Responsive */
+@media(max-width:950px){
+  #mainContainer { flex-direction:column; align-items:center; }
+  .card { width:90%; }
+}
+</style>
+</head>
+<body>
+
+<!-- Encabezado con logo -->
+<div id="header">
+  <img src="https://archive.org/download/imagen_mejorada_3D/LOGO%20METEOPMO.png" alt="Logo del Puerto" style="width:150px; height:auto;">
+  <h1>Observaciones Meteorológicas Básicas</h1>
+</div>
+
+<!-- Nota NIL -->
+<div id="notaNIL">
+  Nota: Cuando por algún motivo no se encuentre dato disponible, se deberá ingresar la palabra <strong>"NIL"</strong>, que significa "NO INCLUIDO".
+</div>
+
+<div id="mainContainer">
+  <!-- Tarjeta Formulario -->
+  <div class="card" id="tarjetaFormulario">
+
+    <div class="form-section" id="Titulo">
+      <h2>Título del reporte</h2>
+      <input type="text" id="inputTitulo" placeholder="Ej: Capitanía de puerto de Maullín">
+    </div>
+
+    <div class="form-section" id="A">
+      <h2>A - Fecha y hora UTC</h2>
+      <input type="text" id="inputA" placeholder="DDHHMM">
+    </div>
+
+    <div class="form-section" id="B">
+      <h2>B - Visibilidad (km)</h2>
+      <input type="number" id="inputB" placeholder="1-10" min="1" max="10">
+    </div>
+
+    <div class="form-section" id="C">
+      <h2>C - Cobertura nubosa</h2>
+      <input type="text" id="inputC" placeholder="0-8 o Ej: 4/8">
+    </div>
+
+    <div class="form-section" id="D">
+      <h2>D - Dirección/Intensidad del viento</h2>
+      <input type="text" id="inputD" placeholder="Ej: 300/06">
+    </div>
+
+    <div class="form-section" id="F">
+      <h2>F - Temperatura seca (°C)</h2>
+      <input type="text" id="inputF" placeholder="Ej: 6.9 o NIL">
+    </div>
+
+    <div class="form-section" id="G">
+      <h2>G - Presión atmosférica (hPa)</h2>
+      <input type="text" id="inputG" placeholder="Ej: 1015.2 o NIL">
+    </div>
+
+    <div class="form-section" id="H">
+      <h2>H - Fenómeno</h2>
+      <input type="text" id="inputH" placeholder="Ej: Llovizna, Lluvia, Chubascos, Neblina, etc.">
+    </div>
+
+    <div class="form-section" id="I">
+      <h2>I - Estado del mar</h2>
+      <input type="text" id="inputI" placeholder="Ej: Calma, Llana, Marejadilla, etc.">
+    </div>
+
+    <div class="form-section" id="J">
+      <h2>J - Agua caída (mm)</h2>
+      <input type="text" id="inputJ" placeholder="Ej: 0.0 o NIL">
+    </div>
+
+    <div class="form-section" id="K">
+      <h2>K - Personal que hizo la observación</h2>
+      <input type="text" id="inputK" placeholder="Grado y nombre">
+    </div>
+
+    <button id="generarBtn">Generar Reporte</button>
+  </div>
+
+  <!-- Tarjeta Reporte -->
+  <div class="card" id="tarjetaReporte">
+    <div id="reporte">
+      <pre id="contenidoReporte"></pre>
+    </div>
+    <button id="copiarBtn">Copiar Reporte</button>
+  </div>
+</div>
+
+<!-- Autor -->
+<div id="autor">
+  CREADO POR CABO 2º (MET.) FRANCISCO SALAS MUÑOZ. FECHA: 25/09/2025
+</div>
+
+<script>
+const visInput = document.getElementById('inputB');
+let fenomenoInput = document.getElementById('inputH');
+const fenomenoContainer = document.getElementById('H');
+const cobertura = document.getElementById('inputC');
+const tituloInput = document.getElementById('inputTitulo');
+
+// Guardar título
+if(localStorage.getItem('tituloReporte')){
+  tituloInput.value = localStorage.getItem('tituloReporte');
+}
+tituloInput.addEventListener('input', ()=>{ localStorage.setItem('tituloReporte', tituloInput.value); });
+
+// Actualizar fenómeno según visibilidad
+function actualizarFenomeno(valorVis){
+  if(valorVis === 10){
+    if(fenomenoInput.tagName !== 'SELECT'){
+      const select = document.createElement('select');
+      select.id='inputH';
+      select.innerHTML = `
+        <option value="SIN FENÓMENOS METEOROLÓGICOS">SIN FENÓMENOS METEOROLÓGICOS</option>
+        <option value="NIEBLA (30 MIN ANTES DE LA OBS)">NIEBLA (30 MIN ANTES DE LA OBS)</option>
+        <option value="LLOVIZNA (15,20,30 MIN ANTES DE LA OBS)">LLOVIZNA (15,20,30 MIN ANTES DE LA OBS)</option>
+        <option value="LLUVIA (15,20,30 MIN ANTES DE LA OBS)">LLUVIA (15,20,30 MIN ANTES DE LA OBS)</option>
+        <option value="CHUBASCOS (15,20,30 MIN ANTES DE LA OBS)">CHUBASCOS (15,20,30 MIN ANTES DE LA OBS)</option>
+      `;
+      fenomenoContainer.replaceChild(select, fenomenoInput);
+      fenomenoInput = select;
+    }
+  } else {
+    if(fenomenoInput.tagName === 'SELECT'){
+      const input = document.createElement('input');
+      input.type='text';
+      input.id='inputH';
+      input.placeholder='Ej: Lluvia ligera';
+      fenomenoContainer.replaceChild(input, fenomenoInput);
+      fenomenoInput = input;
+    }
+  }
+}
+
+// Visibilidad: solo 1-10
+visInput.addEventListener('input', ()=>{
+  let valor = parseFloat(visInput.value);
+  if(isNaN(valor) || valor<1) valor=1;
+  if(valor>10) valor=10;
+  visInput.value = valor;
+  actualizarFenomeno(valor);
+});
+
+// Cobertura /8 incluyendo 0
+cobertura.addEventListener('blur', ()=>{
+  let val = cobertura.value.trim();
+  if(/^[0-8]$/.test(val)) cobertura.value = val+'/8';
+  else if(/^[0-8]\/8$/.test(val)) cobertura.value = val;
+});
+
+// Generar reporte
+document.getElementById('generarBtn').addEventListener('click', ()=>{
+  const campos = ['A','B','C','D','F','G','H','I','J','K'];
+  const faltantes=[];
+  const contenedor = document.getElementById('contenidoReporte');
+  contenedor.innerText='';
+
+  const visVal = parseFloat(visInput.value);
+  if(visVal<10 && fenomenoInput.value.trim()===''){
+    faltantes.push('FENÓMENO obligatorio para visibilidad < 10 km');
+  }
+
+  campos.forEach(l=>{
+    const val = document.getElementById('input'+l).value.trim();
+    if(val==='') faltantes.push(`Campo ${l} incompleto`);
+  });
+
+  if(faltantes.length>0){
+    alert('Faltan campos por completar:\n- '+faltantes.join('\n- '));
+    return;
+  }
+
+  // Agregar título en negrita
+  contenedor.innerHTML = `<span class="tituloReporte">${tituloInput.value.toUpperCase()}</span>\n`;
+
+  campos.forEach(l=>{
+    let val = document.getElementById('input'+l).value.trim();
+    const camposConNIL=['F','G','J'];
+    if(val.toUpperCase()==='NIL' && camposConNIL.includes(l)){
+      // deja NIL tal cual
+    } else {
+      if(l==='B') val=val+' KM';
+      if(l==='F') val=val+'°C';
+      if(l==='G') val=val+' HPA';
+      if(l==='J') val=val+' MM';
+      if(l==='D' && val.includes('/')){
+        const p=val.split('/');
+        val=`${p[0].trim()}º / ${p[1].trim()} NDS`;
+      }
+    }
+    // Agregar punto al final
+    contenedor.innerText+=`${l}.- ${val.toUpperCase()}.\n`;
+  });
+});
+
+// Copiar reporte
+document.getElementById('copiarBtn').addEventListener('click', ()=>{
+  const contenedor = document.getElementById('contenidoReporte');
+  navigator.clipboard.writeText(contenedor.innerText);
+});
+</script>
+
+</body>
+</html>
